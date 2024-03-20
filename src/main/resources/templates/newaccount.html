@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New account</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/newaccount.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/newaccount.css">
+
+</head>
+<body>
+<form class="box">
+    <h1 class="newaccount">Create your new account</h1>
+
+    <ul class="wrapper">
+        <li class="form-row">
+            <label for="email">Your Email: </label>
+            <input type="email" id="email" placeholder="Email">
+        </li>
+        <li class="form-row">
+            <label for="password">Your password: </label>
+            <input type="text" id="password" placeholder="Password">
+        </li>
+        <li class="form-row">
+            <label for="username">Your username: </label>
+            <input type="text" id="username" placeholder="Username">
+        </li>
+    </ul>
+    <input type="submit" class="button" value="Create">
+</form>
+</body>
+</html>

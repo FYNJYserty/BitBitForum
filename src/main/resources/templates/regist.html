@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <script type='text/JavaScript' th:src="@{/javascript/registanim.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registstyle.css}">
+
+    <script type='text/JavaScript' src="/static/javascript/registanim.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/registstyle.css">
+
+    <title>BigBitForum</title>
+</head>
+<body>
+<form class='box'>
+    <h1 class='reg'>Login</h1>
+    <input class='login' type='text' placeholder="Login">
+    <input class='password' type='password' placeholder="Password">
+    <input class='button' type="submit" value='Enter'>
+    <a href="newaccount.html" class="create">No account?</a>
+</form>
+
+<form class='Menu'>
+    <div id='sidebar'>
+        <div class='toggle-btn' onclick="OpenMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li>Menu</li>
+            <li><a href="/" class='a1'>Main</a></li>
+            <li><a href="/" class='a2'>Contacts</a></li>
+            <li><a href="/" class='a3'>About us</a></li>
+        </ul>
+        <input type='submit' value="Help" class='helper'>
+    </div>
+</form>
+
+</body >
+</html>
