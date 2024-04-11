@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bigbitforum</groupId>
-    <artifactId>big-bit-forum</artifactId>
+    <artifactId>bit-bit-forum</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>big-bit-forum</name>
     <description>big-bit-forum</description>

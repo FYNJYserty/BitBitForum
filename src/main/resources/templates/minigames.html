@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/minigames.css}">
     <link rel="stylesheet" type="text/css" href="/static/css/minigames.css">
+
+    <script type="text/javascript" src="/static/javascript/snake.js"></script>
+    <script type="text/javascript" src="/static/javascript/tictactoe.js"></script>
 
     <title>Mini games</title>
 </head>
 <body>
 
-<form class = "games-menu">
-    <button class = "game">Крестики-нолики</button>
-    <button class = "game">Змейка</button>
+<form class = "FormGame">
+    <div id="gameField">
+        <canvas id="game" width="300" height="300"></canvas>
+    </div>
 </form>
+
+<form class = "games-menu">
+    <button onclick="OpenTicTacToe()">Крестики-нолики</button>
+    <button onclick="OpenSnake()">Змейка</button>
+</form>
+
+
 
 </body>
 </html>
