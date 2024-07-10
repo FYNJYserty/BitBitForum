@@ -44,20 +44,17 @@ body {
     transition: 0.2s;
 }
 
-#gameField {
+.gameField {
     border-radius: 25px;
     position: fixed;
-    width: 1200px;
+    width: 1300px;
     height: 96%;
     top: 2%;
     background: #333333;
     border-left: 6px solid #01fac2;
-    right: -1200px;
+    border-right: 6px solid #01fac2;
+    right: 30px;
     transition: all 1s;
-}
-
-#gameField.active {
-    right: 100px;
 }
 
 .FormGame canvas{

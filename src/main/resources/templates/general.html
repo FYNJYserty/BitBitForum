@@ -2,21 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
-    <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}">
-    <link rel="stylesheet" type="text/css" href="/static/css/generalstyle.css">
+    
+    <link rel="stylesheet" type="text/css" href="/static/css/generalstyle.css" th:href="@{/css/generalstyle.css}">
 
     <title>General</title>
 </head>
 <body>
 
 <ul class="menu-bar">
-    <li>Меню</li>
-    <li>Обсуждения</li>
-    <li>Онлайн чат</li>
-    <li>Мини игры</li>
-    <li>Аккаунт</li>
-    <li>Настройки</li>
+    <li><a href="discussions.html" th:href="@{/discussions}">Обсуждения</a></li>
+    <li><a href="onlinechat.html" th:href="@{/onlinechat}">Онлайн чат</a></li>
+    <li><a href="minigames.html" th:href="@{/minigames}">Мини игры</a></li>
+    <li><a href="account.html" th:href="@{/account}">Аккаунт</a></li>
+    <li><a href="settings.html" th:href="@{/settings}">Настройки</a></li>
 </ul>
 
 <form class = "main">
