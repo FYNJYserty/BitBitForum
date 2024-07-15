@@ -2,28 +2,29 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="/static/css/minigames.css" th:href="@{/css/minigames.css}">
 
-    <script type="text/javascript" src="/static/javascript/snake.js" th:src="@{/javascript/snake.js}"></script>
-    <script type="text/javascript" src="/static/javascript/tictactoe.js" th:src="@{/javascript/tictactoe.js}"></script>
-
-    <title>Mini games</title>
+    <title>Мини игры</title>
 </head>
 <body>
+    <img src="/static/pictures/BitBitLogo.png" th:src="@{/pictures/BitBitLogo.png}" class="logo">
+    <h1 class="bitbit">BitBit</h1>
 
-<form class = "FormGame">
-    <div class = "gameField">
-        <canvas id="game" width="300" height="300"></canvas>
-    </div>
-</form>
+    <form class = "FormGame">
+        <div class = "gameField">
+            <canvas id="game" width="608" height="608"></canvas>
+        </div>
+    </form>
 
-<form class = "games-menu">
-    <button onclick="">Крестики-нолики</button>
-    <button onclick="">Змейка</button>
-</form>
+    <form class = "games-menu">
+        <button onclick="">Крестики-нолики</button>
+        <button onclick="startSnake()">Змейка</button>
+    </form>
 
 
-
+    <script type="text/javascript" src="/static/javascript/snake.js" th:src="@{/javascript/snake.js}"></script>
+    <script type="text/javascript" src="/static/javascript/tictactoe.js" th:src="@{/javascript/tictactoe.js}"></script>
 </body>
 </html>

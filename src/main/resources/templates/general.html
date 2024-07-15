@@ -5,21 +5,23 @@
     
     <link rel="stylesheet" type="text/css" href="/static/css/generalstyle.css" th:href="@{/css/generalstyle.css}">
 
-    <title>General</title>
+    <title>Главная</title>
 </head>
 <body>
+    <img src="/static/pictures/BitBitLogo.png" th:src="@{/pictures/BitBitLogo.png}" class="logo">
+    
+    <ul class="menu-bar">
+        <li><a href="discussions.html" th:href="@{/discussions}">Обсуждения</a></li>
+        <li><a href="onlinechat.html" th:href="@{/onlinechat}">Онлайн чат</a></li>
+        <li><a href="minigames.html" th:href="@{/minigames}">Мини игры</a></li>
+        <li><a href="account.html" th:href="@{/account}">Аккаунт</a></li>
+        <li><a href="settings.html" th:href="@{/settings}">Настройки</a></li>
+    </ul>
 
-<ul class="menu-bar">
-    <li><a href="discussions.html" th:href="@{/discussions}">Обсуждения</a></li>
-    <li><a href="onlinechat.html" th:href="@{/onlinechat}">Онлайн чат</a></li>
-    <li><a href="minigames.html" th:href="@{/minigames}">Мини игры</a></li>
-    <li><a href="account.html" th:href="@{/account}">Аккаунт</a></li>
-    <li><a href="settings.html" th:href="@{/settings}">Настройки</a></li>
-</ul>
+    <h1 class="bitbit">BitBit</h1>
 
-<form class = "main">
-
-</form>
+    <form class = "main">
+    </form>
 
 </body>
 </html>

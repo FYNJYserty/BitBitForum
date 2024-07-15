@@ -37,6 +37,7 @@ body {
     background: #01fac2;
     margin-bottom: 20px;
     text-align: center;
+    font-family: sans-serif;
     border: 0;
     background: linear-gradient(to bottom, #01fac2, #d2d1d3);
     box-shadow: 0px 3px 20px 0px black;
@@ -57,6 +58,18 @@ body {
     transition: all 1s;
 }
 
-.FormGame canvas{
+.logo {
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 55px;
+    width: 55px;
+    float: left;
+}
 
+.bitbit {
+    margin-top: 13px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: white;
+    float: left;
 }

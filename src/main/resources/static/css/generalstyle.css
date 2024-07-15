@@ -70,3 +70,19 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.logo {
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 55px;
+    width: 55px;
+    float: left;
+}
+
+.bitbit {
+    margin-top: 13px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: white;
+    float: left;
+}
