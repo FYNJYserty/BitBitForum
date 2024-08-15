@@ -28,6 +28,7 @@ body {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 13pt;
+    user-select: none;
 }
 
 .games-menu button:hover {
@@ -43,6 +44,7 @@ body {
     box-shadow: 0px 3px 20px 0px black;
     transform: scale(1.2);
     transition: 0.2s;
+    user-select: none;
 }
 
 .gameField {
@@ -56,6 +58,65 @@ body {
     border-right: 6px solid #01fac2;
     right: 30px;
     transition: all 1s;
+}
+
+canvas {
+    display: block;
+    margin-top: 10%;
+    margin-left: 28%;
+}
+
+.blockArea {
+    display: flex;
+    width: 510px;
+    height: 510px;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14%;
+    background: #0672f5;
+    border-radius: 24px;
+    border: 5px solid #01fac2;
+}
+
+.blockItem {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    padding: 8px;
+    background: #3498db;
+    border: 2px solid #01fac2;
+    width: 140px;
+    height: 140px;
+    border-radius: 24px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    user-select: none;
+}
+
+.blockItem:hover {
+    background: #0672f5;
+    border: 2px solid #01fac2;
+}
+
+.krest {
+    color: rgb(0, 255, 13);
+    font-size: 38px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.circle {
+    color: rgb(255, 0, 0);
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.winColor {
+    color: rgb(30, 255, 0);
+    background: gold;
 }
 
 .logo {
@@ -72,4 +133,5 @@ body {
     font-family: sans-serif;
     color: white;
     float: left;
+    user-select: none;
 }

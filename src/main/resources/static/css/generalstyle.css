@@ -85,4 +85,5 @@ a {
     font-family: sans-serif;
     color: white;
     float: left;
+    user-select: none;
 }
