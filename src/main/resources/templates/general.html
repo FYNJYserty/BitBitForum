@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     
-    <link rel="stylesheet" type="text/css" href="/static/css/generalstyle.css" th:href="@{/css/generalstyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}">
 
-    <title>Главная</title>
+    <title>General</title>
 </head>
 <body>
-    <a href="general.html" th:href="@{/general}"><img src="/static/pictures/BitBitLogo.png" th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
-    
-    <ul class="menu-bar">
-        <li><a href="discussions.html" th:href="@{/discussions}">Обсуждения</a></li>
-        <li><a href="onlinechat.html" th:href="@{/onlinechat}">Онлайн чат</a></li>
-        <li><a href="minigames.html" th:href="@{/minigames}">Мини игры</a></li>
-        <li><a href="account.html" th:href="@{/account}">Аккаунт</a></li>
-        <li><a href="settings.html" th:href="@{/settings}">Настройки</a></li>
-    </ul>
+    <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+    <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
 
-    <h1 class="bitbit">BitBit</h1>
+    <ul class="menu-bar">
+        <li><a href="discussions.html" th:href="@{/discussions}">Discussions</a></li>
+        <li><a href="onlinechat.html" th:href="@{/onlinechat}">Chats</a></li>
+        <li><a href="minigames.html" th:href="@{/minigames}">Mini games</a></li>
+        <li><a href="account.html" th:href="@{/account}">Account</a></li>
+        <li><a href="account.html" th:href="@{/settings}">Settings</a></li>
+    </ul>
 
     <form class = "main">
     </form>

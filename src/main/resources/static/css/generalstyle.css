@@ -56,7 +56,7 @@ body {
 .main {
     margin-top: 60px;
     border-radius: 25px;
-    background: #3498db;
+    background-color: rgb(6, 173, 245);
     position: absolute;
     width: 70%;
     left: 50%;
