@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New account</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/regist.css" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+
+</head>
+<body>
+    <!-- Уведомление об ошибке регистрации -->
+    <div th:if="${errorMessage}" class="notification notification-error" id="errorNotification">
+        <span class="notification-message" th:text="${errorMessage}"></span>
+        <button class="notification-close" onclick="closeNotification('errorNotification')">&times;</button>
+    </div>
+
+    <form th:action="@{/regist}" th:object="${user}" method="post" class="box">
+        <h1 class="newaccount">Create your new account</h1>
+
+        <ul class="wrapper">
+            <li class="form-row">
+                <label for="login">Your Login: </label>
+                <input type="text" id="login" th:field="*{login}" placeholder="Login">
+            </li>
+            <li class="form-row">
+                <label for="password">Your password: </label>
+                <input type="password" id="password" th:field="*{passwd}" placeholder="Password">
+            </li>
+            <li class="form-row">
+                <label for="username">Your username: </label>
+                <input type="text" id="username" th:field="*{username}" placeholder="Username">
+            </li>
+            <li class="form-row">
+                <label for="age">Your age: </label>
+                <input type="text" id="age" th:field="*{ageUsr}" placeholder="Age">
+            </li>
+        </ul>
+        <input type="submit" class="button" value="Create">
+    </form>
+
+    <script type="text/javascript" th:src="@{/javascript/notification}"></script>
+</body>
+</html>
