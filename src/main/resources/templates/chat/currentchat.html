@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/currentchat.css}" href="/static/css/currentchat.css">
+    </head>
+    <body>
+        <!-- Left sidebar -->
+        <div class="sidebar">
+            <p class="menu-text">Menu</p>
+            <nav>
+                <ul>
+                    <li><a href="/templates/discussions/discussions.html">Back</a></li>
+                    <li><a href="/templates/general/general.html">On general</a></li>
+                    <li><a href="/templates/other/about.html">About website</a></li>
+                    <li><a href="/templates/other/help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+
+         <!-- Main content area -->
+        <div class="main-content">
+            <!-- Top block -->
+            <div class="info-block">
+                <h1 class="heading">Name of chat</h1>
+                <p class="info-tags">Author: llas</p>
+                <p class="info-tags">Answers: 0</p>
+                <p class="info-tags">Date: 12</p>
+            </div>
+
+            <!-- Chat messages block -->
+            <div class="chat-messages-block">
+                <!-- Chat message -->
+                <div class="chat-message">
+                    <div class="message-avatar">
+                        <img src="/static/pictures/personlogo.png" alt="User avatar" class="avatar-img">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">llas</span>
+                            <span class="message-time">16:48</span>
+                        </div>
+                        <div class="message-bubble">
+                            <p class="message-text">This is a message.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Own message example -->
+                <div class="chat-message own-message">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">You</span>
+                            <span class="message-time">16:49</span>
+                        </div>
+                        <div class="message-bubble">
+                            <p class="message-text">This is your own message.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom chat-like input -->
+        <div class="chat-input-bar">
+            <form class="chat-form" method="post">
+                <label class="chat-file-label" title="Add files">
+                    <input id="chatFile" name="files" type="file" multiple class="chat-file-input">
+                    <span class="chat-file-icon">📎</span>
+                </label>
+
+                <label class="chat-file-label" title="Record voice">
+                    <input id="chatVoice" name="voice" type="file" accept="audio/*" class="chat-file-input">
+                    <span class="chat-file-icon">🎤</span>
+                </label>
+
+                <input id="chatInput" name="text" class="chat-text-input" type="text" placeholder="Your message...">
+
+                <button type="submit" class="chat-send-btn">Send</button>
+            </form>
+        </div>
+    </body>
+</html>

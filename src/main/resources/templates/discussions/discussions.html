@@ -2,9 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttonpanel.css}">
+
     <title>Discussions</title>
 </head>
-<body>
+    <body>
 
-</body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <ul class="menu-bar">
+            <li><a th:href="@{/discussions}">Discussions</a></li>
+            <li><a th:href="@{/chats}">Chats</a></li>
+            <li><a th:href="@{/minigames}">Mini games</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+            <li><a th:href="@{/settings}">Settings</a></li>
+        </ul>
+
+        <form class = "main" method="post">
+            <div class="button-panel">
+                <button class="round-button" title="Create new discussion" name="action" value="createNew">
+                    <span class="button-icon">New discussion</span>
+                </button>
+                <button class="round-button" title="Create new discussion" name="action" value="findMyDisc">
+                    <span class="button-icon">My discussions</span>
+                </button>
+                <button class="round-button" title="Create new discussion" name="action" value="findAll">
+                    <span class="button-icon">All discussions</span>
+                </button>
+            </div>
+
+            <div class="discussions-container" th:if="${discussions != null and !discussions.isEmpty()}">
+                <div class="discussion-card" th:each="discussion : ${discussions}">
+                    <div class="discussion-header">
+                        <h3 class="discussion-theme" th:text="${discussion.theme}">Theme</h3>
+                    </div>
+                    <div class="discussion-info">
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">Author:</span>
+                            <span class="info-value" th:text="${discussion.author}">Author</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <span class="info-label">Answers:</span>
+                            <span class="info-value" th:text="${discussion.answersCnt}">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📅</span>
+                            <span class="info-label">Date:</span>
+                            <span class="info-value" th:text="${discussion.date}">Date</span>
+                        </div>
+                    </div>
+                    <div class="discussion-actions">
+                        <a class="discussion-open-btn" th:href="@{/discussions/{id}(id=${discussion.id})}">
+                            <span>Open Discussion</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </body>
 </html>

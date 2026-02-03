@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Account</title>
+    <title>Account Settings</title>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/css/account.css}">
 </head>
-<body>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
 
-</body>
+        <div class="account-container">
+            <h2 class="account-title">Account Settings</h2>
+            
+            <form class="account-form" method="post" action="/account/update">
+                <div class="form-section">
+                    <h3 class="section-title">Profile Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" id="username" name="username" class="form-input" placeholder="Enter new username" th:value="${user.username}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter new email" th:value="${user.email}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio" class="form-label">Bio:</label>
+                        <textarea id="bio" name="bio" class="form-textarea" placeholder="Tell us about yourself..." rows="4" th:text="${user.bio}"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Change Password</h3>
+                    
+                    <div class="form-group">
+                        <label for="current-password" class="form-label">Current Password:</label>
+                        <input type="password" id="current-password" name="currentPassword" class="form-input" placeholder="Enter current password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-password" class="form-label">New Password:</label>
+                        <input type="password" id="new-password" name="newPassword" class="form-input" placeholder="Enter new password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Confirm New Password:</label>
+                        <input type="password" id="confirm-password" name="confirmPassword" class="form-input" placeholder="Confirm new password">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" class="cancel-btn" onclick="window.location.href='/account'">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+    </body>
 </html>

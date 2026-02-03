@@ -1,6 +1,6 @@
 package com.bitbitforum.service;
 
-import com.bitbitforum.rabbitmq.RegistrationEmailMessage;
+import com.bitbitforum.utils.BrokerUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class NotificationService {
      * @param confirmationToken
      */
     public void sendRegistrationEmail(String userEmail, String userName, String confirmationToken) {
-        RegistrationEmailMessage message = new RegistrationEmailMessage(
+        BrokerUtil message = new BrokerUtil(
                 userEmail,
                 userName,
                 confirmationToken,

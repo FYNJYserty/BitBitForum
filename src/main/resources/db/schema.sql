@@ -14,7 +14,8 @@ CREATE TABLE Users (
     id_usr SERIAL PRIMARY KEY, --Id
     login VARCHAR(50) NOT NULL UNIQUE, --Login
     passwd VARCHAR(255) NOT NULL, --Password
-    username VARCHAR(255), --User's nickname
+    username VARCHAR(255) NOT NULL, --User's nickname
+    email VARCHAR(255) NOT NULL UNIQUE, --User's email
     age_usr INTEGER CHECK (age_usr >= 0), --Age
     date_reg TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Date of registration
     avatar VARCHAR(255), --Avatar

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 
@@ -48,14 +48,14 @@
                 <li>Menu</li>
                 <li><a th:href="@{/general}" class='a1'>General</a></li>
                 <li><a href="/static" class='a2'>Contacts</a></li>
-                <li><a href="/static" class='a3'>About us</a></li>
+                <li><a th:href="@{/aboutus}" class='a3'>About us</a></li>
                 <li><a href="/static" class='a3'>Telegram bot</a></li>
             </ul>
-            <input type='submit' value="Help" class='helper'>
+            <a class='helper' th:href="@{/help}">Help</a>
         </div>
     </form>
 
-    <script type="text/javascript" th:src="@{/javascript/notification}"></script>
+    <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
 
-</body >
+</body>
 </html>

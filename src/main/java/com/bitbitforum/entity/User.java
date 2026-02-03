@@ -21,6 +21,9 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "age_usr")
     private Integer ageUsr;
 
@@ -36,10 +39,11 @@ public class User {
     // Конструкторы
     public User() {}
 
-    public User(String login, String passwd, String username, int ageUsr) {
+    public User(String login, String passwd, String username, String email, int ageUsr) {
         this.login = login;
         this.passwd = passwd;
         this.username = username;
+        this.email = email;
         this.ageUsr = ageUsr;
     }
 
@@ -55,6 +59,9 @@ public class User {
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
     public Integer getAgeUsr() { return ageUsr; }
     public void setAgeUsr(Integer ageUsr) { this.ageUsr = ageUsr; }

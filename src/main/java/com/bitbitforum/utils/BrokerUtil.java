@@ -1,12 +1,12 @@
-package com.bitbitforum.rabbitmq;
+package com.bitbitforum.utils;
 
-public class RegistrationEmailMessage {
+public class BrokerUtil {
     public String email;
     public String name;
     public String token;
     public String templateType;
 
-    public RegistrationEmailMessage(String email, String name, String token, String templateType) {
+    public BrokerUtil(String email, String name, String token, String templateType) {
         this.email = email;
         this.name = name;
         this.token = token;

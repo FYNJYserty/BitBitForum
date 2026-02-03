@@ -1,10 +1,10 @@
 -- Filling table Users
-INSERT INTO Users (login, passwd, age_usr, date_reg, avatar, role_usr) VALUES
-('ivanov', 'hashed_password_1', 25, '2024-01-15 10:30:00', NULL, 'user'),
-('petrov', 'hashed_password_2', 30, '2024-01-20 14:20:00', NULL, 'user'),
-('sidorova', 'hashed_password_3', 22, '2024-02-05 09:15:00', NULL, 'user'),
-('admin', 'hashed_admin_pass', 35, '2024-01-01 08:00:00', NULL, 'admin'),
-('smirnov', 'hashed_password_4', 28, '2024-02-10 16:45:00', NULL, 'user');
+INSERT INTO Users (login, passwd, username, email, age_usr, date_reg, avatar, role_usr) VALUES
+('ivanov', '$2a$12$Vmf1n1CwFfwl8NYwximMWuWELdMsos.3S6xZ46ZuaxUqYgFUliqJ2', 'ivan', 'qwerty', 25, '2024-01-15 10:30:00', NULL, 'user'), --hashed_password_1
+('petrov', '$2a$12$Kk9dcjgmMgwN64EIGq31PeXRepUNBfkiUsNIA6Y3he1X0F4nR0qnq', 'petya224', 'email', 30, '2024-01-20 14:20:00', NULL, 'user'), --hashed_password_2
+('sidorova', '$2a$12$Q6Oujn.Gmy/S0vPHvvne4.l0JF35gqopf3MtJlebzZXHeJ5fGNCM.', 'alex', 'hime', 22, '2024-02-05 09:15:00', NULL, 'user'), --hashed_password_3
+('admin', '$2a$12$A5d1VkAViR8QoPxIFVhrt.TW0bsdKDX/KXfyXMtw7MexYJbX24ee6', 'admin', 'qwectt', 35, '2024-01-01 08:00:00', NULL, 'admin'), --hashed_admin_pass
+('smirnov', '$2a$12$M8A.HjtdO2dt/o.HXJaYauMvK3Cl2hdBZ2rIw.cV2ryCMQzEhaIz6', 'sanya', 'asjdw', 28, '2024-02-10 16:45:00', NULL, 'user'); --hashed_password_4
 
 -- Filling table Discussion
 INSERT INTO Discussion (theme, text_disc, answers_cnt, date_disc, author_id) VALUES

@@ -1,6 +1,6 @@
 package com.bitbitforum.config;
 
-import com.bitbitforum.service.CustomUserDetailsService;
+import com.bitbitforum.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,12 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
+    @Autowired
+    private final UserService userDetailsService;
     
     @Autowired
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    public SecurityConfig(CustomUserDetailsService userDetailsService) {
+    public SecurityConfig(UserService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
@@ -48,7 +49,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/regist", "/login", "/css/**", "/js/**", "/javascript/**", "/pictures/**").permitAll()
+                        .requestMatchers("/", "/regist", "/login",
+                                "/aboutus","/help","/css/**",
+                                "/js/**", "/javascript/**", "/pictures/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -68,10 +71,9 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .exceptionHandling(exception -> exception
-                        .accessDeniedPage("/access-denied")
+                        .accessDeniedPage("/403")
                 )
-                .authenticationProvider(authenticationProvider())
-                .csrf(csrf -> csrf.disable());
+                .authenticationProvider(authenticationProvider());
 
         return http.build();
     }

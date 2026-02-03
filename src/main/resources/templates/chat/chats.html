@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}" href="/static/css/generalstyle.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}" href="/static/css/notifications.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttonpanel.css}" href="/static/css/buttonpanel.css">
+
+    <title>Chats</title>
+</head>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <ul class="menu-bar">
+            <li><a th:href="@{/discussions}">Discussions</a></li>
+            <li><a th:href="@{/chats}">Chats</a></li>
+            <li><a th:href="@{/minigames}">Mini games</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+            <li><a th:href="@{/settings}">Settings</a></li>
+        </ul>
+
+        <form class = "main">
+            <div class="button-panel">
+                <button class="round-button" title="Create new discussion">
+                    <span class="button-icon">New chat</span>
+                </button>
+                <button class="round-button" title="Create new discussion">
+                    <span class="button-icon">My chats</span>
+                </button>
+            </div>
+        </form>
+
+    </body>
+</html>

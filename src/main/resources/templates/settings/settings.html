@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Settings</title>
-</head>
-<body>
 
-</body>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/settings.css}" href="/static/css/settings.css">
+</head>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <div class="settings-container">
+            <h2 class="settings-title">Settings</h2>
+            
+            <form class="settings-form">
+                <div class="form-section">
+                    <h3 class="section-title">Appearance</h3>
+                    
+                    <div class="form-group">
+                        <label class="setting-label">
+                            <span class="label-text">Dark Theme</span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" name="darkTheme" class="toggle-input">
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="theme-color" class="form-label">Theme Color:</label>
+                        <select id="theme-color" name="themeColor" class="form-select">
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="white">White</option>
+                            <option value="orange">Orange</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Settings</button>
+                    <button type="button" class="reset-btn" onclick="resetSettings()">Reset to Default</button>
+                </div>
+            </form>
+        </div>
+
+        <script th:src="@{/javascript/settings.js}" src="/static/javascript/settings.js"></script>
+    </body>
 </html>

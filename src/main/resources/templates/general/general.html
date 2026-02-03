@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     
     <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttonpanel.css}">
 
     <title>General</title>
 </head>
 <body>
-    <!-- Уведомление об успешном входе -->
     <div th:if="${loginSuccessMessage}" class="notification notification-success" id="loginSuccessNotification">
         <span class="notification-message" th:text="${loginSuccessMessage}"></span>
         <button class="notification-close" onclick="closeNotification('loginSuccessNotification')">&times;</button>
@@ -20,17 +20,16 @@
 
     <ul class="menu-bar">
         <li><a th:href="@{/discussions}">Discussions</a></li>
-        <li><a th:href="@{/onlinechat}">Chats</a></li>
+        <li><a th:href="@{/chats}">Chats</a></li>
         <li><a th:href="@{/minigames}">Mini games</a></li>
         <li><a th:href="@{/account}">Account</a></li>
         <li><a th:href="@{/settings}">Settings</a></li>
     </ul>
 
     <form class = "main">
-
+        
     </form>
 
-    <script type="text/javascript" th:src="@{/javascript/notification}"></script>
-
+    <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
 </body>
 </html>

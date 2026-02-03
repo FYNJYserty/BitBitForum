@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/helppage.css}" href="/static/css/helppage.css">
+
+        <title>Help</title>
+    </head>
+    <body>
+
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <div class="help-container">
+            <h2 class="help-title">If you have any problems or can't figure something out, describe your issue and send it to us</h2>
+            
+            <form class="help-form" method="post" action="/help/submit">
+                <div class="form-group">
+                    <label for="help-email" class="form-label">Your email:</label>
+                    <input type="email" id="help-email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="help-subject" class="form-label">Subject:</label>
+                    <input type="text" id="help-subject" name="subject" class="form-input" placeholder="Brief description of your issue" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="help-message" class="form-label">Describe your problem:</label>
+                    <textarea id="help-message" name="message" class="form-textarea" placeholder="Please describe your issue in detail..." rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="help-submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        
+    </body>
+</html>
