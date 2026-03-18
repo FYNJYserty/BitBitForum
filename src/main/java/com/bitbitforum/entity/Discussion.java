@@ -5,7 +5,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "discussion")
@@ -14,7 +14,7 @@ public class Discussion {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discussion_id_gen")
     @SequenceGenerator(name = "discussion_id_gen", sequenceName = "discussion_id_disc_seq", allocationSize = 1)
     @Column(name = "id_disc", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "theme", nullable = false, length = 200)
     private String theme;
@@ -28,7 +28,7 @@ public class Discussion {
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "date_disc")
-    private Instant dateDisc;
+    private LocalDateTime dateDisc;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -43,11 +43,11 @@ public class Discussion {
         this.author = author;
     }
 
-    public Instant getDateDisc() {
+    public LocalDateTime getDateDisc() {
         return dateDisc;
     }
 
-    public void setDateDisc(Instant dateDisc) {
+    public void setDateDisc(LocalDateTime dateDisc) {
         this.dateDisc = dateDisc;
     }
 
@@ -75,12 +75,11 @@ public class Discussion {
         this.theme = theme;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
 }

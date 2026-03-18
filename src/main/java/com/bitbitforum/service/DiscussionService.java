@@ -31,9 +31,9 @@ public class DiscussionService {
             discussionMap.put("id", discussion.getId());
             discussionMap.put("theme", discussion.getTheme());
             discussionMap.put("answersCnt", discussion.getAnswersCnt());
-            
+
             if (discussion.getDateDisc() != null) {
-                LocalDateTime dateTime = LocalDateTime.ofInstant(discussion.getDateDisc(), java.time.ZoneId.systemDefault());
+                LocalDateTime dateTime = discussion.getDateDisc();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
                 discussionMap.put("date", dateTime.format(formatter));
             } else {
@@ -42,6 +42,7 @@ public class DiscussionService {
             
             if (discussion.getAuthor() != null) {
                 discussionMap.put("author", discussion.getAuthor().getUsername());
+                discussionMap.put("authorId", discussion.getAuthor().getIdUsr());
             } else {
                 discussionMap.put("author", "Unknown");
             }
@@ -63,7 +64,7 @@ public class DiscussionService {
             discussionMap.put("answersCnt", discussion.getAnswersCnt());
 
             if (discussion.getDateDisc() != null) {
-                LocalDateTime dateTime = LocalDateTime.ofInstant(discussion.getDateDisc(), java.time.ZoneId.systemDefault());
+                LocalDateTime dateTime = discussion.getDateDisc();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
                 discussionMap.put("date", dateTime.format(formatter));
             } else {
@@ -72,6 +73,7 @@ public class DiscussionService {
 
             if (discussion.getAuthor() != null) {
                 discussionMap.put("author", discussion.getAuthor().getUsername());
+                discussionMap.put("authorId", discussion.getAuthor().getIdUsr());
             } else {
                 discussionMap.put("author", "Unknown");
             }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Enter Chat</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/enterchat.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+    </head>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <div th:if="${errorMessage}" class="notification notification-error" id="errorNotification">
+            <span class="notification-message" th:text="${errorMessage}"></span>
+            <button class="notification-close" onclick="closeNotification('errorNotification')">&times;</button>
+        </div>
+
+        <div class="chat-container">
+            <h2 class="chat-title">Enter Chat</h2>
+            
+            <form class="chat-form" method="post" th:action="@{/chats/enterchat}" th:object="${chat}">
+                <div class="form-group">
+                    <label for="chat-id" class="form-label">Chat ID:</label>
+                    <input type="text" id="chat-id" name="chatId" class="form-input" th:field="*{id}" placeholder="Enter chat ID..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="chat-password" class="form-label">Password (if required):</label>
+                    <input type="password" id="chat-password" name="password" class="form-input" th:field="*{passwordChat}" placeholder="Enter password...">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="chat-submit-btn">Enter Chat</button>
+                    <a th:href="@{/chats}" class="chat-cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
+    </body>
+</html>

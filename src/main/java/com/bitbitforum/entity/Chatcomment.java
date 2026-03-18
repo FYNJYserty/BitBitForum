@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "chatcomment")
@@ -14,14 +15,14 @@ public class Chatcomment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chatcomment_id_gen")
     @SequenceGenerator(name = "chatcomment_id_gen", sequenceName = "chatcomment_id_com_seq", allocationSize = 1)
     @Column(name = "id_com", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "text_com", nullable = false, length = Integer.MAX_VALUE)
     private String textCom;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "date_com")
-    private Instant dateCom;
+    private LocalDateTime dateCom;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -33,11 +34,11 @@ public class Chatcomment {
     @JoinColumn(name = "usr_id")
     private User usr;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +50,11 @@ public class Chatcomment {
         this.textCom = textCom;
     }
 
-    public Instant getDateCom() {
+    public LocalDateTime getDateCom() {
         return dateCom;
     }
 
-    public void setDateCom(Instant dateCom) {
+    public void setDateCom(LocalDateTime dateCom) {
         this.dateCom = dateCom;
     }
 

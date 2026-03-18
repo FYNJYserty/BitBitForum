@@ -5,7 +5,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "disccomment")
@@ -14,14 +14,14 @@ public class Disccomment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "disccomment_id_gen")
     @SequenceGenerator(name = "disccomment_id_gen", sequenceName = "disccomment_id_disc_comment_seq", allocationSize = 1)
     @Column(name = "id_disc_comment", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "text_com", nullable = false, length = Integer.MAX_VALUE)
     private String textCom;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "date_com")
-    private Instant dateCom;
+    private LocalDateTime dateCom;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -33,16 +33,11 @@ public class Disccomment {
     @JoinColumn(name = "disc_id")
     private Discussion disc;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "parent_id")
-    private Disccomment parent;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,11 +49,11 @@ public class Disccomment {
         this.textCom = textCom;
     }
 
-    public Instant getDateCom() {
+    public LocalDateTime getDateCom() {
         return dateCom;
     }
 
-    public void setDateCom(Instant dateCom) {
+    public void setDateCom(LocalDateTime dateCom) {
         this.dateCom = dateCom;
     }
 
@@ -76,14 +71,6 @@ public class Disccomment {
 
     public void setDisc(Discussion disc) {
         this.disc = disc;
-    }
-
-    public Disccomment getParent() {
-        return parent;
-    }
-
-    public void setParent(Disccomment parent) {
-        this.parent = parent;
     }
 
 }

@@ -3,18 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Chat</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/currentchat.css}" href="/static/css/currentchat.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/currentchat.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+
     </head>
     <body>
+
+        <div th:if="${chatSuccessMessage}" class="notification notification-success" id="loginSuccessNotification">
+            <span class="notification-message" th:text="${chatSuccessMessage}"></span>
+            <button class="notification-close" onclick="closeNotification('loginSuccessNotification')">&times;</button>
+        </div>
+
         <!-- Left sidebar -->
         <div class="sidebar">
             <p class="menu-text">Menu</p>
             <nav>
                 <ul>
-                    <li><a href="/templates/discussions/discussions.html">Back</a></li>
-                    <li><a href="/templates/general/general.html">On general</a></li>
-                    <li><a href="/templates/other/about.html">About website</a></li>
-                    <li><a href="/templates/other/help.html">Help</a></li>
+                    <li><a th:href="@{/chats}">Back</a></li>
+                    <li><a th:href="@{/general}">On general</a></li>
+                    <li><a th:href="@{/aboutus}">About website</a></li>
+                    <li><a th:href="@{/help}">Help</a></li>
                 </ul>
             </nav>
         </div>
@@ -23,39 +31,61 @@
         <div class="main-content">
             <!-- Top block -->
             <div class="info-block">
-                <h1 class="heading">Name of chat</h1>
-                <p class="info-tags">Author: llas</p>
-                <p class="info-tags">Answers: 0</p>
-                <p class="info-tags">Date: 12</p>
+                <h1 class="heading" th:text="${chatInfo.nameChat}"></h1>
+                <p class="info-tags" th:text="${'ID: ' + chatInfo.id}"></p>
             </div>
 
             <!-- Chat messages block -->
             <div class="chat-messages-block">
-                <!-- Chat message -->
-                <div class="chat-message">
-                    <div class="message-avatar">
-                        <img src="/static/pictures/personlogo.png" alt="User avatar" class="avatar-img">
+                <div th:each="message : ${chatMessages}">
+                    <!-- Chat message -->
+                    <div class="chat-message" th:if="${message.usr.idUsr != userId}">
+                        <div class="message-avatar">
+                            <img th:src="@{/pictures/personlogo.png}" alt="User avatar" class="avatar-img">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name" th:text="${message.usr.username}"></span>
+                                <span class="message-time" th:text="${#temporals.format(message.dateCom, 'dd:MM:yyyy HH:mm')}"></span>
+                            </div>
+                            <div class="message-bubble">
+                                <p class="message-text" th:text="${message.textCom}"></p>
+                                
+                                <!-- Attachments -->
+                                <div class="comment-attachments" th:if="${attachmentsMap[message.id] != null and !#lists.isEmpty(attachmentsMap[message.id])}">
+                                    <div class="attachment-item" th:each="attachment : ${attachmentsMap[message.id]}">
+                                        <a th:href="@{'/chats/download/' + ${attachment.id}}" 
+                                           class="attachment-link" 
+                                           th:text="${attachment.filename}"
+                                           title="Download file">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="sender-name">llas</span>
-                            <span class="message-time">16:48</span>
-                        </div>
-                        <div class="message-bubble">
-                            <p class="message-text">This is a message.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Own message example -->
-                <div class="chat-message own-message">
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="sender-name">You</span>
-                            <span class="message-time">16:49</span>
-                        </div>
-                        <div class="message-bubble">
-                            <p class="message-text">This is your own message.</p>
+
+                    <!-- Own message example -->
+                    <div class="chat-message own-message" th:if="${message.usr.idUsr == userId}">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name" th:text="${message.usr.username}"></span>
+                                <span class="message-time" th:text="${#temporals.format(message.dateCom, 'dd:MM:yyyy HH:mm')}"></span>
+                            </div>
+                            <div class="message-bubble">
+                                <p class="message-text" th:text="${message.textCom}"></p>
+                                
+                                <!-- Attachments -->
+                                <div class="comment-attachments" th:if="${attachmentsMap[message.id] != null and !#lists.isEmpty(attachmentsMap[message.id])}">
+                                    <div class="attachment-item" th:each="attachment : ${attachmentsMap[message.id]}">
+                                        <a th:href="@{'/chats/download/' + ${attachment.id}}" 
+                                           class="attachment-link" 
+                                           th:text="${attachment.filename}"
+                                           title="Download file">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,7 +94,16 @@
 
         <!-- Bottom chat-like input -->
         <div class="chat-input-bar">
-            <form class="chat-form" method="post">
+            <!-- File preview area -->
+            <div id="filePreview" class="file-preview" style="display: none;">
+                <div class="file-preview-header">
+                    <span>Selected files:</span>
+                    <button type="button" id="clearFiles" class="clear-files-btn">Clear all</button>
+                </div>
+                <div id="fileList" class="file-list"></div>
+            </div>
+
+            <form class="chat-form" method="post" th:action="@{'/chats/' + ${chatInfo.id}}" enctype="multipart/form-data">
                 <label class="chat-file-label" title="Add files">
                     <input id="chatFile" name="files" type="file" multiple class="chat-file-input">
                     <span class="chat-file-icon">📎</span>
@@ -80,5 +119,8 @@
                 <button type="submit" class="chat-send-btn">Send</button>
             </form>
         </div>
+
+        <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
+        <script type="text/javascript" th:src="@{/javascript/discussion.js}"></script>
     </body>
 </html>

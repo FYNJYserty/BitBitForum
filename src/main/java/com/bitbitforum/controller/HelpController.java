@@ -18,7 +18,7 @@ public class HelpController {
      * Help website page get method
      * @return
      */
-    @GetMapping("help")
+    @GetMapping("/help")
     public String help() {
         return "other/help";
     }

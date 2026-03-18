@@ -26,8 +26,36 @@
         <li><a th:href="@{/settings}">Settings</a></li>
     </ul>
 
-    <form class = "main">
-        
+    <form class="main main-general">
+        <div class="discussions-container" th:if="${newsList != null and !newsList.isEmpty()}">
+            <div class="discussion-card" th:each="news : ${newsList}">
+                <div class="discussion-header">
+                    <h3 class="discussion-theme" th:text="${news.get('title')}">Title</h3>
+                </div>
+                <div class="discussion-info">
+                    <div class="info-item">
+                        <span class="info-icon">👤</span>
+                        <span class="info-label">Author:</span>
+                        <span class="info-value" th:text="${news.get('author')}">Author</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span class="info-label">Time:</span>
+                        <span class="info-value" th:text="${news.get('timeLeft')}">Time</span>
+                    </div>
+                </div>
+                <div class="discussion-actions">
+                    <a class="discussion-open-btn" th:href="${news.get('link')}" target="_blank" rel="noopener noreferrer">
+                        <span>Open News</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-item-block" th:if="${newsList == null or newsList.isEmpty()}">
+            <h1>There is no news :(</h1>
+        </div>
     </form>
 
     <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>

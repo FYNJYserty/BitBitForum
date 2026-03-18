@@ -10,24 +10,24 @@ import java.util.Objects;
 public class DiscstatusId implements java.io.Serializable {
     private static final long serialVersionUID = 1282327485336960166L;
     @Column(name = "usr_id", nullable = false)
-    private Integer usrId;
+    private Long usrId;
 
     @Column(name = "disc_id", nullable = false)
-    private Integer discId;
+    private Long discId;
 
-    public Integer getUsrId() {
+    public Long getUsrId() {
         return usrId;
     }
 
-    public void setUsrId(Integer usrId) {
+    public void setUsrId(Long usrId) {
         this.usrId = usrId;
     }
 
-    public Integer getDiscId() {
+    public Long getDiscId() {
         return discId;
     }
 
-    public void setDiscId(Integer discId) {
+    public void setDiscId(Long discId) {
         this.discId = discId;
     }
 

@@ -36,8 +36,7 @@ CREATE TABLE DiscComment (
     text_com TEXT NOT NULL, --Text of comment
     date_com TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Date of creation
     usr_id INTEGER REFERENCES Users(id_usr) ON DELETE CASCADE, --The commentator's id
-    disc_id INTEGER REFERENCES Discussion(id_disc) ON DELETE CASCADE, --Id of discussion
-    parent_id INTEGER REFERENCES DiscComment(id_disc_comment) ON DELETE CASCADE --Reply comment
+    disc_id INTEGER REFERENCES Discussion(id_disc) ON DELETE CASCADE --Id of discussion
 );
 --Chat table
 CREATE TABLE Chat (

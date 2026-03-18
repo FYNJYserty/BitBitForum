@@ -13,19 +13,19 @@ INSERT INTO Discussion (theme, text_disc, answers_cnt, date_disc, author_id) VAL
 ('Обсуждение нового функционала', 'Предлагаю добавить возможность загрузки видео в комментарии', 1, '2024-02-17 10:15:00', 3);
 
 -- Filling table DiscComment
-INSERT INTO DiscComment (text_com, date_com, usr_id, disc_id, parent_id) VALUES
-('Рекомендую использовать BTREE индексы для большинства случаев', '2024-02-15 12:30:00', 2, 1, NULL),
-('А есть ли разница между BTREE и HASH?', '2024-02-15 13:45:00', 3, 1, 1),
-('HASH лучше для точных совпадений, но BTREE универсальнее', '2024-02-15 14:20:00', 4, 1, 2),
-('Мы используем ESLint + Prettier для JavaScript проектов', '2024-02-16 15:45:00', 1, 2, NULL),
-('А для Python советую Black и flake8', '2024-02-16 16:30:00', 4, 2, NULL),
-('Отличная идея! Поддерживаю предложение', '2024-02-17 11:30:00', 5, 3, NULL);
+INSERT INTO DiscComment (text_com, date_com, usr_id, disc_id) VALUES
+('Рекомендую использовать BTREE индексы для большинства случаев', '2024-02-15 12:30:00', 2, 1),
+('А есть ли разница между BTREE и HASH?', '2024-02-15 13:45:00', 3, 1),
+('HASH лучше для точных совпадений, но BTREE универсальнее', '2024-02-15 14:20:00', 4, 1),
+('Мы используем ESLint + Prettier для JavaScript проектов', '2024-02-16 15:45:00', 1, 2),
+('А для Python советую Black и flake8', '2024-02-16 16:30:00', 4, 2),
+('Отличная идея! Поддерживаю предложение', '2024-02-17 11:30:00', 5, 3);
 
 -- Filling table Chat
 INSERT INTO Chat (name_chat, password_chat) VALUES
 ('Общий чат', NULL),
-('Технические вопросы', 'tech123'),
-('Администрация', 'admin_chat_secure');
+('Технические вопросы', '$2a$12$V20ejieKDhmVbbUQlwGyuu6gI2LKtAHupyP2VIYxDrDvWQv79qa8e'), --tech123
+('Администрация', '$2a$12$/zdNEVDmeFcwP918PSmIIuiuofTHP/2CIBwMCCZCHRet59LGuxlPG'); --admin_chat_secure
 
 -- Filling table ChatComment
 INSERT INTO ChatComment (text_com, date_com, chat_id, usr_id) VALUES

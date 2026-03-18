@@ -8,7 +8,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "chatstatus")
 public class Chatstatus {
-    @SequenceGenerator(name = "chatstatus_id_gen", sequenceName = "discussion_id_disc_seq", allocationSize = 1)
     @EmbeddedId
     private ChatstatusId id;
 

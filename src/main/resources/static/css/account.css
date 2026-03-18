@@ -5,6 +5,43 @@ body {
     background: #0672f5;
 }
 
+/* Messages */
+.message {
+    padding: 15px 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: slideDown 0.3s ease;
+}
+
+.success-message {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.9) 0%, rgba(39, 174, 96, 0.9) 100%);
+    color: white;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.error-message {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.9) 0%, rgba(192, 57, 43, 0.9) 100%);
+    color: white;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .logo {
     position: fixed;
     top: 5px;
@@ -112,6 +149,13 @@ body {
     color: rgba(255,255,255,0.4);
 }
 
+.form-hint {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    margin-top: 4px;
+    font-style: italic;
+}
+
 .form-textarea {
     resize: vertical;
     min-height: 100px;
@@ -151,6 +195,7 @@ body {
     background: rgba(255,255,255,0.1);
     color: #e8f7ff;
     border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
 }
 
 .cancel-btn:hover {

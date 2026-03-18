@@ -10,24 +10,24 @@ import java.util.Objects;
 public class ChatstatusId implements java.io.Serializable {
     private static final long serialVersionUID = 278447766718275335L;
     @Column(name = "chat_id", nullable = false)
-    private Integer chatId;
+    private Long chatId;
 
     @Column(name = "usr_id", nullable = false)
-    private Integer usrId;
+    private Long usrId;
 
-    public Integer getChatId() {
+    public Long getChatId() {
         return chatId;
     }
 
-    public void setChatId(Integer chatId) {
+    public void setChatId(Long chatId) {
         this.chatId = chatId;
     }
 
-    public Integer getUsrId() {
+    public Long getUsrId() {
         return usrId;
     }
 
-    public void setUsrId(Integer usrId) {
+    public void setUsrId(Long usrId) {
         this.usrId = usrId;
     }
 

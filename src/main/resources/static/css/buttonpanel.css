@@ -21,6 +21,9 @@
     padding: 0px 20px;
     margin-top: 0px;
     margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .round-button:hover {

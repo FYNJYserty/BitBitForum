@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create New Discussion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/newdiscussion.css}">
 </head>
-<body>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
 
-</body>
+        <div class="discussion-container">
+            <h2 class="discussion-title">Create a new discussion</h2>
+            
+            <form class="discussion-form" method="post" th:action="@{/discussions/create}" th:object="${discussion}">
+                <div class="form-group">
+                    <label for="discussion-theme" class="form-label">Discussion title:</label>
+                    <input type="text" id="discussion-theme" th:field="*{theme}" class="form-input" placeholder="Enter discussion title..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="discussion-text" class="form-label">Discussion content:</label>
+                    <textarea id="discussion-text" th:field="*{textDisc}" class="form-textarea" placeholder="Write your discussion content here..." rows="8" required></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="discussion-submit-btn">Create Discussion</button>
+                    <a th:href="@{/discussions}" class="discussion-cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

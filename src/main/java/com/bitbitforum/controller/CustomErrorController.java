@@ -15,25 +15,25 @@ import org.springframework.web.servlet.ModelAndView;
 @Order(1)
 public class CustomErrorController implements ErrorController {
 
-    // Обработка ошибки 403 - Доступ запрещен
+    // Error 403 - access denied
     @GetMapping("/403")
     public String accessDenied() {
         return "errorpages/403";
     }
 
-    // Обработка ошибки 404 - Страница не найдена
+    // Error 404 - web page not found
     @GetMapping("/404")
     public String notFound() {
         return "errorpages/404";
     }
 
-    // Обработка ошибки 500 - Внутренняя ошибка сервера
+    // Error 500 - server's error
     @GetMapping("/500")
     public String internalServerError() {
         return "errorpages/500";
     }
 
-    // Общий обработчик всех ошибок
+    // Common exception
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
@@ -50,11 +50,11 @@ public class CustomErrorController implements ErrorController {
             }
         }
         
-        // Страница по умолчанию для неизвестных ошибок
-        return "errorpages/500";
+        // Default error page
+        return "errorpages/generalerror";
     }
 
-    // Обработка исключений в контроллерах
+    // Exceprion handler
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(Exception ex) {
         ModelAndView modelAndView = new ModelAndView("errorpages/500");
