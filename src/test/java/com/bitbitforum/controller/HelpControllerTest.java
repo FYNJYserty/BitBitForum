@@ -1,8 +1,10 @@
 package com.bitbitforum.controller;
 
+import com.bitbitforum.service.MessageService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,13 +19,16 @@ public class HelpControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private MessageService messageService;
+
     @Test
     @WithMockUser
     public void aboutUsTest() throws Exception {
         mockMvc.perform(get("/aboutus"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("other/about"))
-                .andExpect(content().string(containsString("")));
+                .andExpect(content().string(containsString("Краткая информация о сайте")));
     }
 
     @Test
