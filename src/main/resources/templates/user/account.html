@@ -24,6 +24,11 @@
             
             <form class="account-form" th:method="patch" th:action="@{/account/update}" th:object="${userUpdateDto}">
                 <div class="form-section">
+                    <h3 class="section-title">Profile Avatar</h3>
+
+                    <img class="account-avatar" th:if="${user.avatar == null}" th:src="@{/pictures/personlogo.png}">
+                </div>
+                <div class="form-section">
                     <h3 class="section-title">Profile Information</h3>
                     
                     <div class="form-group">

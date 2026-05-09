@@ -248,8 +248,6 @@ public class ChatController {
     @Transactional
     @DeleteMapping("/delete/{id}")
     public String deleteChat(@PathVariable Long id, Model model) throws SQLException {
-        // Deleting attachments in chat
-        // TODO delete attachment in chat
         // Deleting chat comments
         chatCommentRepository.deleteAllByChatId(id);
         // Deleting chat status

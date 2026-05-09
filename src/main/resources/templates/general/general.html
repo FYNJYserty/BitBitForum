@@ -19,14 +19,15 @@
     <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
 
     <ul class="menu-bar">
+        <li><a th:href="@{/general}">General</a></li>
         <li><a th:href="@{/discussions}">Discussions</a></li>
         <li><a th:href="@{/chats}">Chats</a></li>
         <li><a th:href="@{/minigames}">Mini games</a></li>
         <li><a th:href="@{/account}">Account</a></li>
-        <li><a th:href="@{/settings}">Settings</a></li>
+        <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a th:href="@{/admin/users}">Admin</a></li>
     </ul>
 
-    <form class="main main-general">
+    <div class="main main-general">
         <div class="discussions-container" th:if="${newsList != null and !newsList.isEmpty()}">
             <div class="discussion-card" th:each="news : ${newsList}">
                 <div class="discussion-header">
@@ -56,7 +57,7 @@
         <div class="no-item-block" th:if="${newsList == null or newsList.isEmpty()}">
             <h1>There is no news :(</h1>
         </div>
-    </form>
+    </div>
 
     <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
 </body>

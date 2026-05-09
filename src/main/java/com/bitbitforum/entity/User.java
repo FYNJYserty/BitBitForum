@@ -1,6 +1,8 @@
 package com.bitbitforum.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import com.bitbitforum.enums.ThemeColor;
 
 import java.time.LocalDateTime;
 

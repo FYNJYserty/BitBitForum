@@ -2,6 +2,7 @@ package com.bitbitforum.config;
 
 import com.bitbitforum.entity.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -21,6 +22,11 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        String role = user.getRoleUsr();
+        if (role != null && !role.isEmpty()) {
+            String roleWithPrefix = role.startsWith("ROLE_") ? role : "ROLE_" + role;
+            return List.of(new SimpleGrantedAuthority(roleWithPrefix));
+        }
         return List.of();
     }
 

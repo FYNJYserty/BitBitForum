@@ -14,11 +14,12 @@
         <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
 
         <ul class="menu-bar">
+            <li><a th:href="@{/general}">General</a></li>
             <li><a th:href="@{/discussions}">Discussions</a></li>
             <li><a th:href="@{/chats}">Chats</a></li>
             <li><a th:href="@{/minigames}">Mini games</a></li>
             <li><a th:href="@{/account}">Account</a></li>
-            <li><a th:href="@{/settings}">Settings</a></li>
+            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a th:href="@{/admin/users}">Admin</a></li>
         </ul>
 
         <div class="main main-general">

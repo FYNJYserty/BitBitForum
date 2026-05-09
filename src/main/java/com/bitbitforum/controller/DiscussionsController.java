@@ -218,8 +218,6 @@ public class DiscussionsController {
         if (!discussionRepository.existsById(id)) {
             return "redirect:/discussions?error=Discussion not found";
         }
-        // Delete attachments
-        // TODO delete attachments in deleted discussion
 
         // Get discussion before deleting related records
         Discussion discussion = discussionRepository.findById(id).get();

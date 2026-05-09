@@ -59,4 +59,19 @@ public class ChatService {
         }
         return result;
     }
+    // All chats with information
+    public List<Map<String, Object>> findAllChatsWithInfo() {
+        List<Chat> allChats = chatRepository.findAll();
+        List<Map<String, Object>> result = new ArrayList<>();
+
+        for (Chat chat : allChats) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", chat.getId());
+            map.put("name", chat.getNameChat());
+            map.put("members", statusRepository.findAllUsersByChatId(chat.getId()).toString().replaceAll("\\[|\\]", ""));
+            map.put("ownersId", statusRepository.findUsrIdByChatId(chat.getId()).toString().replaceAll("\\[|\\]", ""));
+            result.add(map);
+        }
+        return result;
+    }
 }
