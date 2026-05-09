@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Discussion</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/currentdisc.css}">
+        <script th:src="@{/javascript/discussion.js}"></script>
+    </head>
+    
+    <body>
+        <!-- Left sidebar -->
+        <div class="sidebar">
+            <p class="menu-text">Menu</p>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/discussions}">Back</a></li>
+                    <li><a th:href="@{/general}">On general</a></li>
+                    <li><a th:href="@{/aboutus}">About website</a></li>
+                    <li><a th:href="@{/help}">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <!-- Top block -->
+            <div class="info-block">
+                <h1 class="heading" th:text="${discussioninfo.theme}"></h1>
+                <p class="info-tags" th:text="${'Author: ' + discussioninfo.author.username}"></p>
+                <p class="info-tags" th:text="${'Answers count: ' + discussioninfo.answersCnt}"></p>
+                <p class="info-tags" th:text="${'Date of creation: ' + #temporals.format(discussioninfo.dateDisc, 'dd.MM.yyyy HH:mm')}"></p>
+            </div>
+
+            <!-- Comments block -->
+            <div class="comments-block">
+                <!-- Comments -->
+                <div class="comment" th:each="comment : ${comments}">
+                    <div class="comment-avatar">
+                        <img th:src="@{/pictures/personlogo.png}" alt="User avatar" class="avatar-img">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="author-name" th:text="${comment.usr.username}"></span>
+                            <span class="comment-date" th:text="${#temporals.format(comment.dateCom, 'dd.MM.yyyy HH:mm')}"></span>
+                        </div>
+                        <p class="comment-text" th:text="${comment.textCom}"></p>
+                        
+                        <!-- Attachments -->
+                        <div class="comment-attachments" th:if="${attachmentsMap[comment.id] != null and !#lists.isEmpty(attachmentsMap[comment.id])}">
+                            <div class="attachment-item" th:each="attachment : ${attachmentsMap[comment.id]}">
+                                <a th:href="@{'/discussions/download/' + ${attachment.id}}" 
+                                   class="attachment-link" 
+                                   th:text="${attachment.filename}"
+                                   title="Download file">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom chat-like input -->
+        <div class="chat-input-bar">
+            <!-- File preview area -->
+            <div id="filePreview" class="file-preview" style="display: none;">
+                <div class="file-preview-header">
+                    <span>Selected files:</span>
+                    <button type="button" id="clearFiles" class="clear-files-btn">Clear all</button>
+                </div>
+                <div id="fileList" class="file-list"></div>
+            </div>
+
+            <form class="chat-form" method="post" th:action="@{'/discussions/' + ${discussioninfo.id}}" enctype="multipart/form-data">
+                <label class="chat-file-label" title="Add files">
+                    <input id="chatFile" name="files" type="file" multiple class="chat-file-input">
+                    <span class="chat-file-icon">📎</span>
+                </label>
+
+                <label class="chat-file-label" title="Record voice">
+                    <input id="chatVoice" name="voice" type="file" accept="audio/*" class="chat-file-input">
+                    <span class="chat-file-icon">🎤</span>
+                </label>
+
+                <input id="chatInput" name="text" class="chat-text-input" type="text" placeholder="Your message...">
+
+                <button type="submit" class="chat-send-btn">Send</button>
+            </form>
+        </div>
+    </body>
+</html>

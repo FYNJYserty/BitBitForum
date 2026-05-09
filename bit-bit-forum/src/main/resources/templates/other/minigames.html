@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/minigames.css}">
+
+    <title>Mini games</title>
+</head>
+<body>
+    <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+    <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+    <form class = "FormGame" id="FormGame">
+        <div class = "gameField" id="gameField">
+            
+        </div>
+    </form>
+
+    <form class = "games-menu">
+        <button type="button" onclick="startTicTacToe()">Tic tac toe</button>
+        <button type="button" onclick="startSnake()">Snake</button>
+        <button type="button" onclick="breakout()">Breakthrough</button>
+        <button type="button" onclick="asteroids()">Asteroids</button>
+    </form>
+
+
+    <script type="text/javascript" th:src="@{/javascript/games.js}"></script>
+</body>
+</html>

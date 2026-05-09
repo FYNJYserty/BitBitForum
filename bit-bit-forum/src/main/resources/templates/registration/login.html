@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script type='text/JavaScript' th:src="@{/javascript/loginanim.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}">
+
+    <title>BigBitForum</title>
+</head>
+<body>
+    <!-- Уведомление об успешной регистрации -->
+    <div th:if="${successMessage}" class="notification notification-success" id="successNotification">
+        <span class="notification-message" th:text="${successMessage}"></span>
+        <button class="notification-close" onclick="closeNotification('successNotification')">&times;</button>
+    </div>
+
+    <!-- Уведомление об ошибке входа -->
+    <div th:if="${loginError}" class="notification notification-error" id="errorNotification">
+        <span class="notification-message" th:text="${loginError}"></span>
+        <button class="notification-close" onclick="closeNotification('errorNotification')">&times;</button>
+    </div>
+
+    <!-- Уведомление об успешном выходе -->
+    <div th:if="${logoutMessage}" class="notification notification-info" id="logoutNotification">
+        <span class="notification-message" th:text="${logoutMessage}"></span>
+        <button class="notification-close" onclick="closeNotification('logoutNotification')">&times;</button>
+    </div>
+
+    <form th:action="@{/login}" method="post" class='box'>
+        <h1 class='reg'>Login</h1>
+        <input class='login' type='text' name="username" placeholder="Login" required>
+        <input class='password' type='password' name="password" placeholder="Password" required>
+        <input class='button' type="submit" value='Enter'>
+        <a th:href="@{/regist}" class="create">No account?</a>
+    </form>
+
+    <form class='Menu'>
+        <div id='sidebar'>
+            <div class='toggle-btn' onclick="OpenMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li>Menu</li>
+                <li><a th:href="@{/general}" class='a1'>General</a></li>
+                <li><a href="/static" class='a2'>Contacts</a></li>
+                <li><a th:href="@{/aboutus}" class='a3'>About us</a></li>
+                <li><a href="/static" class='a3'>Telegram bot</a></li>
+            </ul>
+            <a class='helper' th:href="@{/help}">Help</a>
+        </div>
+    </form>
+
+    <script type="text/javascript" th:src="@{/javascript/notification.js}"></script>
+
+</body>
+</html>

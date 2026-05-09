@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generalstyle.css}" href="/static/css/generalstyle.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notifications.css}" href="/static/css/notifications.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/buttonpanel.css}" href="/static/css/buttonpanel.css">
+
+    <title>Admin panel</title>
+</head>
+    <body>
+        <a th:href="@{/general}"><img th:src="@{/pictures/BitBitLogo.png}" class="logo"></a>
+        <a th:href="@{/general}"><h1 class="bitbit">BitBit</h1></a>
+
+        <ul class="menu-bar">
+            <li><a th:href="@{/general}">General</a></li>
+            <li><a th:href="@{/discussions}">Discussions</a></li>
+            <li><a th:href="@{/chats}">Chats</a></li>
+            <li><a th:href="@{/minigames}">Mini games</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+        </ul>
+
+        <div class = "main main-general">
+            <!--Button panel-->
+            <div class="button-panel">
+                <a class="round-button" th:href="@{/admin/users}">
+                    <span class="button-icon">All users</span>
+                </a>
+                <a class="round-button" th:href="@{/admin/chats}">
+                    <span class="button-icon">All chats</span>
+                </a>
+                <a class="round-button" th:href="@{/admin/discussions}">
+                    <span class="button-icon">All discussions</span>
+                </a>
+                <a class="round-button" th:href="@{/admin/attachments}">
+                    <span class="button-icon">All attachments</span>
+                </a>
+            </div>
+
+            <!--Information cards-->
+            <!--Users-->
+            <div class="discussions-container" th:if="${users != null and !users.isEmpty()}">
+                <div class="discussion-card" th:each="user : ${users}">
+                    <div class="discussion-header">
+                        <h3 class="discussion-theme" th:text="${'User ID: ' + user.getIdUsr()}"></h3>
+                    </div>
+                    <div class="discussion-info">
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">Login:</span>
+                            <span class="info-value" th:text="${user.getLogin()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">Username:</span>
+                            <span class="info-value" th:text="${user.getUsername()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <span class="info-label">Email:</span>
+                            <span class="info-value" th:text="${user.getEmail()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Age:</span>
+                            <span class="info-value" th:text="${user.getAgeUsr()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📅</span>
+                            <span class="info-label">Date of reg:</span>
+                            <span class="info-value" th:text="${#temporals.format(user.getDateReg(), 'dd:MM:yyyy HH:mm')}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Role:</span>
+                            <span class="info-value" th:text="${user.getRoleUsr()}"></span>
+                        </div>
+                    </div>
+                    <div class="discussion-actions">
+                        <form th:action="@{/admin/users/delete/{id}(id=${user.getIdUsr()})}" 
+                              method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this user?')">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="discussion-delete-btn">
+                                <span>Delete</span>
+                                <span class="arrow">×</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Chats-->
+            <div class="discussions-container" th:if="${chats != null and !chats.isEmpty()}">
+                <div class="discussion-card" th:each="chat : ${chats}">
+                    <div class="discussion-header">
+                        <h3 class="discussion-theme" th:text="${'Chat ID: ' + chat.id}"></h3>
+                    </div>
+                    <div class="discussion-info">
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <span class="info-label">Name:</span>
+                            <span class="info-value" th:text="${chat.name}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📝</span>
+                            <span class="info-label">Members:</span>
+                            <span class="info-value" th:text="${chat.members}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">Owner ID:</span>
+                            <span class="info-value" th:text="${chat.ownersId}"></span>
+                        </div>
+                    </div>
+                    <div class="discussion-actions">
+                        <form th:action="@{/admin/chats/delete/{id}(id=${chat.id})}" 
+                              method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this chat?')">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="discussion-delete-btn">
+                                <span>Delete</span>
+                                <span class="arrow">×</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Discussions-->
+            <div class="discussions-container" th:if="${discussions != null and !discussions.isEmpty()}">
+                <div class="discussion-card" th:each="discussion : ${discussions}">
+                    <div class="discussion-header">
+                        <h3 class="discussion-theme" th:text="${'Discussion ID: ' + discussion.getId()}"></h3>
+                    </div>
+                    <div class="discussion-info">
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">Owner:</span>
+                            <span class="info-value" th:text="${discussion.getAuthor().username}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📝</span>
+                            <span class="info-label">Theme:</span>
+                            <span class="info-value" th:text="${discussion.getTheme()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <span class="info-label">Answers:</span>
+                            <span class="info-value" th:text="${discussion.getAnswersCnt()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📅</span>
+                            <span class="info-label">Date:</span>
+                            <span class="info-value" th:text="${#temporals.format(discussion.getDateDisc(), 'dd:MM:yyyy HH:mm')}"></span>
+                        </div>
+                    </div>
+                    <div class="discussion-actions">
+                        <form th:action="@{/admin/discussions/delete/{id}(id=${discussion.getId()})}" 
+                              method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this discussion?')">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="discussion-delete-btn">
+                                <span>Delete</span>
+                                <span class="arrow">×</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Attachments-->
+            <div class="discussions-container" th:if="${attachments != null and !attachments.isEmpty()}">
+                <div class="discussion-card" th:each="attachment : ${attachments}">
+                    <div class="discussion-header">
+                        <h3 class="discussion-theme" th:text="${'Attachment ID: ' + attachment.getId()}"></h3>
+                    </div>
+                    <div class="discussion-info">
+                        <div class="info-item">
+                            <span class="info-icon">📄</span>
+                            <span class="info-label">Mime: </span>
+                            <span class="info-value" th:text="${attachment.getMimeType()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📎</span>
+                            <span class="info-label">File name:</span>
+                            <span class="info-value" th:text="${attachment.getFilename()}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">💬</span>
+                            <span class="info-label">Chat Comment:</span>
+                            <span class="info-value" th:text="${attachment.getChatcom() != null ? 'ID: ' + attachment.getChatcom().getId() : 'No'}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🗣️</span>
+                            <span class="info-label">Discussion Comment:</span>
+                            <span class="info-value" th:text="${attachment.getDisccom() != null ? 'ID: ' + attachment.getDisccom().getId() : 'No'}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <span class="info-label">User:</span>
+                            <span class="info-value" th:text="${attachment.getUsr() != null ? attachment.getUsr().getUsername() : 'Unknown'}"></span>
+                        </div>
+                    </div>
+                    <div class="discussion-actions">
+                        <form th:action="@{/admin/attachments/delete/{id}(id=${attachment.getId()})}" 
+                              method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this attachment?')">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" class="discussion-delete-btn">
+                                <span>Delete</span>
+                                <span class="arrow">×</span>
+                            </button>
+                        </form>
+                        <a class="discussion-open-btn" th:href="@{/admin/download/{id}(id=${attachment.getId()})}">
+                            <span>Download</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>

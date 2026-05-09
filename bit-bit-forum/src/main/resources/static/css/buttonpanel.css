@@ -1,0 +1,32 @@
+.button-panel {
+    display: flex;
+    max-height: 5%;
+    align-items: center;
+    border-radius: 20px;
+    border: 5px solid transparent;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.round-button {
+    background: linear-gradient(135deg, #191919 0%, #2c2c2c 100%);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    color: white;
+    border-color: #0672f5;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    padding: 0px 20px;
+    margin-top: 0px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.round-button:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: #2ecc71;
+}
